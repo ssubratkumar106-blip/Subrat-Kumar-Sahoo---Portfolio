@@ -3,8 +3,8 @@
 # 🌟 Subrat Kumar Sahoo
 ### **AI & Machine Learning Engineer | Data Science | Full-Stack Developer**
 
-[![Portfolio](https://img.shields.io/badge/Portfolio-Live_Site-c41e3a?style=for-the-badge&logo=vercel&logoColor=white)](https://subrat-portfolio.vercel.app/)
-[![GitHub](https://img.shields.io/badge/GitHub-ssubratkumar106--blip-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ssubratkumar106-blip)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Live_Site-c41e3a?style=for-the-badge&logo=vercel&logoColor=white)](https://subrat-kumar-sahoo-portfolio.vercel.app/)
+[![GitHub](https://img.shields.io/badge/GitHub-Source_Code-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ssubratkumar106-blip/Subrat-Kumar-Sahoo---Portfolio.git)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/subrat-kumar-sahoo-277664344)
 [![Email](https://img.shields.io/badge/Email-ssubratkumar106@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:ssubratkumar106@gmail.com)
 
@@ -16,15 +16,16 @@
 
 ---
 
-## 🎯 Engineering Philosophy & Passion
+## 📖 Overview & Description
 
-I am a Computer Science undergraduate specializing in **Artificial Intelligence, Machine Learning, and Full-Stack Engineering**. My core passion lies at the intersection of **autonomous agentic workflows**, **computer vision systems**, and **scalable web architectures**. 
+This portfolio showcases my projects, technical skills, and achievements as a Computer Science Engineering student. It includes several practical projects related to web development, artificial intelligence, and software development. Through these projects, I have gained hands-on experience in technologies such as Python, Java, JavaScript, React, Flask, HTML, CSS, SQL, Docker, and Git.
 
-Rather than treating machine learning as isolated notebooks, I focus on building end-to-end applications:
-- 🧠 **Agentic AI & LLMs**: Designing multi-step autonomous workflows, context-aware prompt orchestration, and agent tools.
-- 👁️ **Computer Vision**: Engineering low-latency visual invigilation and face/gaze telemetry using OpenCV.
-- 📊 **Data Science & Quantitative Analytics**: Conducting rigorous Exploratory Data Analysis (EDA), econometric feature extraction, and predictive time-series modeling.
-- ⚡ **Full-Stack Engineering**: Developing high-performance, responsive web interfaces and microservices with Next.js, TypeScript, and Python/Flask.
+The projects demonstrate my ability to design user-friendly applications, build interactive web interfaces, and implement real-world problem-solving solutions. Some of the featured works include a Face Recognition System, Task Tracker Web App, Mood-Based Quote Generator, Fitness Activity Splitter, and a modern Tic-Tac-Toe game.
+
+- 🌐 **Live Portfolio**: [https://subrat-kumar-sahoo-portfolio.vercel.app/](https://subrat-kumar-sahoo-portfolio.vercel.app/)
+- 💻 **Source Code**: [https://github.com/ssubratkumar106-blip/Subrat-Kumar-Sahoo---Portfolio.git](https://github.com/ssubratkumar106-blip/Subrat-Kumar-Sahoo---Portfolio.git)
+
+`#SoftwareDevelopment` `#WebDevelopment` `#AIProjects` `#Python` `#JavaScript` `#StudentDeveloper` `#Portfolio`
 
 ---
 
@@ -119,8 +120,8 @@ This repository powers my personal production portfolio website:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/ssubratkumar106-blip/Portfolio.git
-cd Portfolio/Folio-Motion
+git clone https://github.com/ssubratkumar106-blip/Subrat-Kumar-Sahoo---Portfolio.git
+cd Subrat-Kumar-Sahoo---Portfolio/Folio-Motion
 ```
 
 ### 2. Install dependencies
