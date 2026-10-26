@@ -10,7 +10,13 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { FaChevronRight, FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import {
+  FaChevronRight,
+  FaGithub,
+  FaExternalLinkAlt,
+  FaYoutube,
+  FaLinkedin,
+} from "react-icons/fa";
 import { Project, projects } from "@/data/projects";
 import Image from "next/image";
 
@@ -103,6 +109,14 @@ export function ProjectSection() {
               <div>
                 {/* Project Screenshot / Visual Preview */}
                 <div className="relative w-full h-48 overflow-hidden bg-black/40 border-b border-charcoal-border">
+                  {project.badge && (
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/85 border border-crimson/60 text-cream text-[10px] font-bold uppercase tracking-wider backdrop-blur-md shadow-md">
+                        <span className="h-1.5 w-1.5 rounded-full bg-crimson animate-pulse" />
+                        {project.badge}
+                      </span>
+                    </div>
+                  )}
                   <Image
                     src={project.image}
                     alt={project.title}
@@ -152,6 +166,18 @@ export function ProjectSection() {
                 </Button>
 
                 <div className="flex items-center space-x-2">
+                  {project.video && (
+                    <a
+                      href={project.video}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 text-cream/70 hover:text-red-400 hover:bg-white/5 rounded-lg transition-colors"
+                      aria-label="Live Demo Video"
+                      title="Watch Live Demo Video"
+                    >
+                      <FaYoutube className="h-4 w-4 text-red-500" />
+                    </a>
+                  )}
                   {project.github && (
                     <a
                       href={project.github}
@@ -161,6 +187,24 @@ export function ProjectSection() {
                       aria-label="GitHub Repository"
                     >
                       <FaGithub className="h-4 w-4" />
+                    </a>
+                  )}
+                  {project.linkedin && (
+                    <a
+                      href={project.linkedin.startsWith("TODO") ? undefined : project.linkedin}
+                      onClick={(e) => {
+                        if (project.linkedin?.startsWith("TODO")) {
+                          e.preventDefault();
+                          alert("LinkedIn post link coming soon! (Placeholder configured in data/projects.ts)");
+                        }
+                      }}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 text-cream/70 hover:text-[#0a66c2] hover:bg-white/5 rounded-lg transition-colors"
+                      aria-label="LinkedIn Post"
+                      title="LinkedIn Post (Placeholder)"
+                    >
+                      <FaLinkedin className="h-4 w-4 text-[#0a66c2]" />
                     </a>
                   )}
                   {project.live && (
@@ -186,9 +230,17 @@ export function ProjectSection() {
           onOpenChange={(open) => !open && setSelectedProject(null)}
         >
           {selectedProject && (
-            <DialogContent className="max-w-2xl bg-charcoal-card border-charcoal-border text-cream-soft sm:rounded-2xl shadow-2xl">
+            <DialogContent className="max-w-2xl sm:max-w-3xl max-h-[88vh] overflow-y-auto bg-charcoal-card border-charcoal-border text-cream-soft sm:rounded-2xl shadow-2xl">
               <DialogHeader>
                 <div className="relative w-full h-56 rounded-xl overflow-hidden mb-4 bg-black/60 border border-charcoal-border">
+                  {selectedProject.badge && (
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/85 border border-crimson/60 text-cream text-[10px] font-bold uppercase tracking-wider backdrop-blur-md shadow-md">
+                        <span className="h-1.5 w-1.5 rounded-full bg-crimson animate-pulse" />
+                        {selectedProject.badge}
+                      </span>
+                    </div>
+                  )}
                   <Image
                     src={selectedProject.image}
                     alt={selectedProject.title}
@@ -197,26 +249,134 @@ export function ProjectSection() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal-card via-transparent to-transparent opacity-60" />
                 </div>
+
+                {selectedProject.tagline && (
+                  <p className="text-xs uppercase font-bold tracking-widest text-crimson mb-1">
+                    {selectedProject.tagline}
+                  </p>
+                )}
+
                 <DialogTitle className="font-display text-2xl sm:text-3xl font-bold text-cream-soft">
                   {selectedProject.title}
                 </DialogTitle>
-                <DialogDescription className="text-sm text-[#baa89d] mt-1">
+
+                {(selectedProject.label || selectedProject.timeline || selectedProject.mentor) && (
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-[#baa89d] mt-2 pt-2 border-t border-charcoal-border/70">
+                    {selectedProject.label && (
+                      <span className="font-semibold text-cream bg-crimson/15 px-2.5 py-0.5 rounded-full border border-crimson/30">
+                        {selectedProject.label}
+                      </span>
+                    )}
+                    {selectedProject.timeline && (
+                      <span>
+                        Timeline: <strong className="text-cream-gold font-medium">{selectedProject.timeline}</strong>
+                      </span>
+                    )}
+                    {selectedProject.mentor && (
+                      <span>
+                        Mentor: <strong className="text-cream-gold font-medium">{selectedProject.mentor}</strong>
+                      </span>
+                    )}
+                  </div>
+                )}
+
+                <DialogDescription className="text-sm text-[#baa89d] mt-2 leading-relaxed">
                   {selectedProject.description}
                 </DialogDescription>
               </DialogHeader>
 
-              <div className="space-y-4 my-2">
-                <div>
-                  <h4 className="text-sm font-bold text-cream mb-1.5 uppercase tracking-wider text-xs">
-                    Architecture &amp; Key Impact
-                  </h4>
-                  <p className="text-sm text-[#d4c5ba] leading-relaxed">
-                    {selectedProject.details}
-                  </p>
-                </div>
+              <div className="space-y-5 my-2">
+                {/* Full Description / Architecture */}
+                {selectedProject.fullDescriptionPoints && selectedProject.fullDescriptionPoints.length > 0 ? (
+                  <div>
+                    <h4 className="text-xs font-bold text-cream mb-2 uppercase tracking-wider">
+                      {selectedProject.fullDescriptionIntro || "Platform Overview"}
+                    </h4>
+                    <ul className="space-y-1.5 text-sm text-[#d4c5ba]">
+                      {selectedProject.fullDescriptionPoints.map((point, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                          <span className="text-crimson mt-1 text-xs">&#9670;</span>
+                          <span className="leading-relaxed">{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : (
+                  <div>
+                    <h4 className="text-xs font-bold text-cream mb-1.5 uppercase tracking-wider">
+                      Architecture &amp; Key Impact
+                    </h4>
+                    <p className="text-sm text-[#d4c5ba] leading-relaxed">
+                      {selectedProject.details}
+                    </p>
+                  </div>
+                )}
 
+                {/* My Role (Most Prominent Section) */}
+                {selectedProject.myRolePoints && selectedProject.myRolePoints.length > 0 && (
+                  <div className="rounded-xl p-4 sm:p-5 bg-crimson/10 border-2 border-crimson/40 shadow-[0_0_25px_rgba(196,30,58,0.15)]">
+                    <div className="flex items-center justify-between mb-3">
+                      <h4 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                        <span className="h-2 w-2 rounded-full bg-crimson animate-pulse" />
+                        My Role: {selectedProject.myRoleTitle || "Team Lead & AI/ML Lead"}
+                      </h4>
+                      <span className="text-[10px] font-semibold px-2.5 py-0.5 rounded-full bg-crimson text-white shadow-sm uppercase tracking-wider">
+                        Lead Role
+                      </span>
+                    </div>
+                    <ul className="space-y-2 text-sm text-[#e6ded7]">
+                      {selectedProject.myRolePoints.map((point, idx) => (
+                        <li key={idx} className="flex items-start gap-2.5">
+                          <span className="text-crimson-glow font-bold mt-0.5 text-xs">&bull;</span>
+                          <span className="leading-relaxed">{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Highlighted Results / Benchmark Badges */}
+                {selectedProject.benchmarkResults && selectedProject.benchmarkResults.length > 0 && (
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="text-xs font-bold text-cream uppercase tracking-wider">
+                        Benchmark Results
+                      </h4>
+                      <span className="text-[11px] text-[#baa89d] italic">
+                        Held-out test benchmark datasets
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
+                      {selectedProject.benchmarkResults.map((bench, idx) => (
+                        <div
+                          key={idx}
+                          className="p-3 rounded-lg bg-charcoal-elevated border border-charcoal-border hover:border-crimson/30 transition-colors"
+                        >
+                          <div className="text-[11px] font-semibold text-[#c2b3a8]">{bench.engine}</div>
+                          <div className="text-base sm:text-lg font-bold text-gradient-crimson-cream mt-0.5">
+                            {bench.metric}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    {selectedProject.benchmarkStatsSummary && (
+                      <div className="flex flex-wrap gap-2 mt-2.5">
+                        {selectedProject.benchmarkStatsSummary.map((stat, idx) => (
+                          <span
+                            key={idx}
+                            className="text-xs px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cream font-medium"
+                          >
+                            {stat}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Technologies & Tools Used */}
                 <div>
-                  <h4 className="text-sm font-bold text-cream mb-2 uppercase tracking-wider text-xs">
+                  <h4 className="text-xs font-bold text-cream mb-2 uppercase tracking-wider">
                     Technologies &amp; Tools Used
                   </h4>
                   <div className="flex flex-wrap gap-2">
@@ -230,9 +390,51 @@ export function ProjectSection() {
                     ))}
                   </div>
                 </div>
+
+                {/* Team VisionCraft & Mentor */}
+                {selectedProject.team && selectedProject.team.length > 0 && (
+                  <div className="p-4 rounded-xl bg-black/40 border border-charcoal-border">
+                    <h4 className="text-xs font-bold text-cream mb-2.5 uppercase tracking-wider">
+                      Team VisionCraft
+                    </h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#d4c5ba]">
+                      {selectedProject.team.map((member, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center justify-between py-1.5 px-2.5 rounded bg-charcoal-elevated/70 border border-charcoal-border/50"
+                        >
+                          <span className="font-semibold text-cream">{member.name}</span>
+                          <span className="text-[#baa89d] text-[11px]">{member.role}</span>
+                        </div>
+                      ))}
+                    </div>
+                    {selectedProject.mentorThanks && (
+                      <p className="text-xs text-cream-gold mt-3 pt-2.5 border-t border-charcoal-border/70 italic text-center sm:text-left">
+                        {selectedProject.mentorThanks}
+                      </p>
+                    )}
+                  </div>
+                )}
               </div>
 
-              <div className="flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-charcoal-border">
+              {/* Action Buttons Footer */}
+              <div className="flex flex-wrap items-center justify-end gap-2.5 pt-4 border-t border-charcoal-border">
+                {selectedProject.video && (
+                  <a
+                    href={selectedProject.video}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="gap-2 border-red-500/40 text-cream hover:bg-red-500/10 hover:text-white"
+                    >
+                      <FaYoutube className="h-4 w-4 text-red-500" />
+                      Live Demo Video
+                    </Button>
+                  </a>
+                )}
                 {selectedProject.github && (
                   <a
                     href={selectedProject.github}
@@ -242,6 +444,24 @@ export function ProjectSection() {
                     <Button variant="outline" size="sm" className="gap-2 border-charcoal-border text-cream hover:bg-white/5">
                       <FaGithub className="h-4 w-4" />
                       View Code
+                    </Button>
+                  </a>
+                )}
+                {selectedProject.linkedin && (
+                  <a
+                    href={selectedProject.linkedin.startsWith("TODO") ? undefined : selectedProject.linkedin}
+                    onClick={(e) => {
+                      if (selectedProject.linkedin?.startsWith("TODO")) {
+                        e.preventDefault();
+                        alert("LinkedIn post link coming soon! Placeholder configured in data/projects.ts.");
+                      }
+                    }}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button variant="outline" size="sm" className="gap-2 border-charcoal-border text-cream hover:bg-white/5">
+                      <FaLinkedin className="h-4 w-4 text-[#0a66c2]" />
+                      LinkedIn Post
                     </Button>
                   </a>
                 )}

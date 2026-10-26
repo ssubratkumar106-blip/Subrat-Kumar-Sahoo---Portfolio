@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <!-- Background Gradients -->
+    <radialGradient id="bgGlow" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#240c06" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#120604" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#080302" stop-opacity="1" />
+    </radialGradient>
+    
+    <radialGradient id="orangeGlow" cx="50%" cy="38%" r="40%">
+      <stop offset="0%" stop-color="#F4550A" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#c41e3a" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Shield Gradients -->
+    <linearGradient id="shieldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4550A" />
+      <stop offset="50%" stop-color="#ff7a33" />
+      <stop offset="100%" stop-color="#c41e3a" />
+    </linearGradient>
+
+    <linearGradient id="shieldFill" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e0a05" />
+      <stop offset="100%" stop-color="#0d0402" />
+    </linearGradient>
+
+    <linearGradient id="orangeText" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F4550A" />
+      <stop offset="100%" stop-color="#ff7326" />
+    </linearGradient>
+
+    <!-- Subtle Grid Pattern -->
+    <pattern id="cyberGrid" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#F4550A" stroke-width="0.8" stroke-opacity="0.08" />
+      <circle cx="50" cy="0" r="1.5" fill="#F4550A" fill-opacity="0.2" />
+    </pattern>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1600" height="900" fill="url(#bgGlow)" />
+  <rect width="1600" height="900" fill="url(#cyberGrid)" />
+  <rect width="1600" height="900" fill="url(#orangeGlow)" />
+
+  <!-- Corner Tech Accents -->
+  <g stroke="#F4550A" stroke-opacity="0.3" stroke-width="2" fill="none">
+    <path d="M 60 120 L 60 60 L 120 60" />
+    <path d="M 1540 120 L 1540 60 L 1480 60" />
+    <path d="M 60 780 L 60 840 L 120 840" />
+    <path d="M 1540 780 L 1540 840 L 1480 840" />
+  </g>
+
+  <!-- Top Pill Badge: Team VisionCraft -->
+  <g transform="translate(800, 115)">
+    <rect x="-130" y="-20" width="260" height="40" rx="20" fill="#140704" stroke="#F4550A" stroke-opacity="0.45" stroke-width="1.5" />
+    <circle cx="-100" cy="0" r="4" fill="#F4550A" filter="url(#glow)" />
+    <text x="-85" y="5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f5e6c8" letter-spacing="2">TEAM VISIONCRAFT</text>
+  </g>
+
+  <!-- Central Shield Emblem -->
+  <g transform="translate(800, 305)">
+    <!-- Shield Outer Glow -->
+    <path d="M 0 -115 L 95 -60 L 95 35 C 95 105 45 155 0 175 C -45 155 -95 105 -95 35 L -95 -60 Z"
+          fill="none" stroke="#F4550A" stroke-opacity="0.35" stroke-width="12" filter="url(#glow)" />
+    
+    <!-- Shield Body -->
+    <path d="M 0 -110 L 90 -58 L 90 32 C 90 98 42 146 0 165 C -42 146 -90 98 -90 32 L -90 -58 Z"
+          fill="url(#shieldFill)" stroke="url(#shieldBorder)" stroke-width="4.5" />
+
+    <!-- Interior Shield Circuit / Keyhole AI Icon -->
+    <g transform="translate(0, 10)">
+      <!-- AI Core Node -->
+      <circle cx="0" cy="-22" r="16" fill="none" stroke="#F4550A" stroke-width="3.5" filter="url(#glow)" />
+      <circle cx="0" cy="-22" r="7" fill="#ffffff" />
+      
+      <!-- Keyhole stem / radar sweep -->
+      <path d="M -7 -10 L 7 -10 L 12 32 L -12 32 Z" fill="#F4550A" fill-opacity="0.9" />
+      
+      <!-- Circuit horizontal branches -->
+      <path d="M -45 -22 L -16 -22" stroke="#ff7a33" stroke-width="2.5" stroke-linecap="round" />
+      <circle cx="-48" cy="-22" r="3" fill="#ff7a33" />
+      <path d="M 16 -22 L 45 -22" stroke="#ff7a33" stroke-width="2.5" stroke-linecap="round" />
+      <circle cx="48" cy="-22" r="3" fill="#ff7a33" />
+
+      <!-- Circuit lower branches -->
+      <path d="M 0 32 L 0 58 L 30 75" stroke="#F4550A" stroke-width="2.5" stroke-linecap="round" fill="none" />
+      <circle cx="32" cy="76" r="3" fill="#F4550A" />
+      <path d="M 0 58 L -30 75" stroke="#F4550A" stroke-width="2.5" stroke-linecap="round" fill="none" />
+      <circle cx="-32" cy="76" r="3" fill="#F4550A" />
+    </g>
+  </g>
+
+  <!-- Project Title: CYBER in White, GUARD in Orange -->
+  <g transform="translate(800, 565)">
+    <text text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif" font-weight="900" font-size="88" letter-spacing="4">
+      <tspan fill="#FFFFFF">CYBER</tspan><tspan fill="url(#orangeText)" filter="url(#glow)">GUARD</tspan>
+    </text>
+  </g>
+
+  <!-- Subtitle: AI-POWERED PLATFORM -->
+  <g transform="translate(800, 625)">
+    <text text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#ff9966" letter-spacing="6">
+      AI-POWERED THREAT DETECTION &amp; RESPONSE
+    </text>
+  </g>
+
+  <!-- Tagline: Detect. Investigate. Respond. -->
+  <g transform="translate(800, 695)">
+    <rect x="-240" y="-24" width="480" height="48" rx="24" fill="#170805" stroke="#F4550A" stroke-opacity="0.3" stroke-width="1.5" />
+    <text text-anchor="middle" y="7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="600" fill="#faf5ed" letter-spacing="3">
+      Detect. Investigate. Respond.
+    </text>
+  </g>
+
+  <!-- Bottom Badges / Capabilities Hint -->
+  <g transform="translate(800, 785)">
+    <text text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="600" fill="#a89285" letter-spacing="2">
+      GUARD APP &bull; ENTERPRISE PLATFORM &bull; FASTAPI &bull; ML ENGINES &bull; SOAR
+    </text>
+  </g>
+</svg>

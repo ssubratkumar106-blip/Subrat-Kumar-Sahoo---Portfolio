@@ -94,6 +94,34 @@ export const links: PortfolioLinks = {
   resumeUrl: "/resume.pdf",
   projects: [
     {
+      name: "CyberGuard: AI-Powered Threat Detection, Investigation & Response Platform",
+      tagline: "Detect. Investigate. Respond.",
+      url: "https://github.com/teamvisioncraft875-netizen/CyberGuard",
+      repo: "https://github.com/teamvisioncraft875-netizen/CyberGuard",
+      video: "https://www.youtube.com/watch?v=4rsPaYPXP2M",
+      problem:
+        "Cyber threats are getting faster and smarter, and attacks rarely happen in isolation across individual users and enterprise infrastructures.",
+      approach:
+        "Architected an AI-native cybersecurity platform unifying threat detection, investigation, and response with dual modes (Guard App & Enterprise Platform), host-disjoint splits, and FastAPI microservices.",
+      result:
+        "Delivered 99.59% phishing accuracy, 97.10% malware detection rate, 98.41% EDR recall on unseen hosts, and 99.65% incident correlation recall across 7+ detection engines and 21+ security capabilities.",
+      tags: [
+        "Python",
+        "FastAPI",
+        "Scikit-learn",
+        "LightGBM",
+        "PyTorch",
+        "Node.js",
+        "React",
+        "PostgreSQL",
+        "Supabase",
+        "React Native",
+        "Pydantic",
+      ],
+      image: "/images/projects/cyberguard.svg",
+      featured: true,
+    },
+    {
       name: "LearnVaultX",
       tagline: "AI-Driven Adaptive Learning & Exam Simulation Platform",
       url: "https://learnvaultx.online/",
